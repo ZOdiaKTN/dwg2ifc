@@ -1,0 +1,7 @@
+layers:
+  Murs: WALL
+  Murs-1: WALL
+  Murs-2: WALL
+  Portes: DOOR
+  Doors_Other: DOOR
+  A-GLAZ: WINDOW

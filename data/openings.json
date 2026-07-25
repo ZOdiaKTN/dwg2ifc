@@ -1,0 +1,180 @@
+{
+  "openings": [
+    {
+      "id": "846",
+      "category": "DOOR",
+      "insertion_point": [
+        46269.406131,
+        -255980.727531
+      ],
+      "rotation_deg": 270.0130913229237,
+      "block_name": "Doors_Door-sets_Swedoor_JELD-WEN_Exterior_Steel_4210_Unequal_Double_40 - SNR_PuertaEmergencia_1300x2200 2-8074706-NIVEAU RDC",
+      "estimated_width_mm": 1360.0
+    },
+    {
+      "id": "933",
+      "category": "DOOR",
+      "insertion_point": [
+        133169.41852,
+        -255960.872035
+      ],
+      "rotation_deg": 270.0130913229237,
+      "block_name": "Doors_Door-sets_Swedoor_JELD-WEN_Exterior_Steel_4210_Unequal_Double_40 - SNR_PuertaEmergencia_1300x2200-4671772-NIVEAU RDC",
+      "estimated_width_mm": 1360.0
+    },
+    {
+      "id": "AD2",
+      "category": "DOOR",
+      "insertion_point": [
+        97419.413272,
+        -255969.040435
+      ],
+      "rotation_deg": 270.0130913229236,
+      "block_name": "Doors_Door-sets_Swedoor_JELD-WEN_Exterior_Steel_4210_Unequal_Double_40 - SNR_PuertaEmergenciaMirilla_1300x2200-5614408-NIVEAU RDC",
+      "estimated_width_mm": 1360.0
+    },
+    {
+      "id": "B38",
+      "category": "DOOR",
+      "insertion_point": [
+        53721.114116,
+        -263448.90011
+      ],
+      "rotation_deg": 180.0130913229142,
+      "block_name": "Doors_Industrial_Wayne-Dalton_Advanced-Rolling-Door-System-Model-800-ADV - SNR_CortinaD11_3600x4000-7353258-NIVEAU RDC",
+      "estimated_width_mm": 4622.7
+    },
+    {
+      "id": "B39",
+      "category": "DOOR",
+      "insertion_point": [
+        61221.113921,
+        -263447.18646
+      ],
+      "rotation_deg": 180.0130913229142,
+      "block_name": "Doors_Industrial_Wayne-Dalton_Advanced-Rolling-Door-System-Model-800-ADV - SNR_CortinaD11_3600x4000-7353258-NIVEAU RDC",
+      "estimated_width_mm": 4622.7
+    },
+    {
+      "id": "B51",
+      "category": "DOOR",
+      "insertion_point": [
+        85671.118933,
+        -263441.599959
+      ],
+      "rotation_deg": 180.0130913229142,
+      "block_name": "Doors_Industrial_Wayne-Dalton_Advanced-Rolling-Door-System-Model-800-ADV - SNR_CortinaD14_2200x2800-7353261-NIVEAU RDC",
+      "estimated_width_mm": 4122.7
+    },
+    {
+      "id": "B52",
+      "category": "DOOR",
+      "insertion_point": [
+        101721.119927,
+        -263437.932748
+      ],
+      "rotation_deg": 180.0130913229142,
+      "block_name": "Doors_Industrial_Wayne-Dalton_Advanced-Rolling-Door-System-Model-800-ADV - SNR_CortinaD11_3600x4000-7353258-NIVEAU RDC",
+      "estimated_width_mm": 4622.7
+    },
+    {
+      "id": "B53",
+      "category": "DOOR",
+      "insertion_point": [
+        125721.123539,
+        -263432.449066
+      ],
+      "rotation_deg": 180.0130913229142,
+      "block_name": "Doors_Industrial_Wayne-Dalton_Advanced-Rolling-Door-System-Model-800-ADV - SNR_CortinaD11_3600x4000-7353258-NIVEAU RDC",
+      "estimated_width_mm": 4622.7
+    },
+    {
+      "id": "B54",
+      "category": "DOOR",
+      "insertion_point": [
+        45998.265322,
+        -250440.789339
+      ],
+      "rotation_deg": 90.01309132292373,
+      "block_name": "Doors_Industrial_Wayne-Dalton_Advanced-Rolling-Door-System-Model-800-ADV - SNR_CortinaD11_3600x4000-7353258-NIVEAU RDC",
+      "estimated_width_mm": 4622.7
+    },
+    {
+      "id": "F7A",
+      "category": "DOOR",
+      "insertion_point": [
+        81867.915678,
+        -249422.593575
+      ],
+      "rotation_deg": 180.0130913229142,
+      "block_name": "Doors_Door-sets_Swedoor_JELD-WEN_Exterior_Steel_4210_Unequal_Double_40 - SNR_PuertaEmergenciaMirilla_1300x2200-5614243-NIVEAU RDC",
+      "estimated_width_mm": 1360.0
+    },
+    {
+      "id": "1060",
+      "category": "DOOR",
+      "insertion_point": [
+        90519.526283,
+        -256470.616981
+      ],
+      "rotation_deg": 270.0130913229236,
+      "block_name": "Doors_Door-sets_Swedoor_JELD-WEN_Exterior_Steel_4210_Unequal_Double_40 - SNR_PuertaEmergenciaMirilla_1300x2200-V3-NIVEAU RDC",
+      "estimated_width_mm": 1360.0
+    },
+    {
+      "id": "1150",
+      "category": "DOOR",
+      "insertion_point": [
+        87819.524941,
+        -256471.233895
+      ],
+      "rotation_deg": 270.013091322925,
+      "block_name": "Doors_Door-sets_Swedoor_JELD-WEN_Exterior_Steel_4210_Unequal_Double_40 - SNR_PuertaEmergenciaMirilla_1300x2200-V4-NIVEAU RDC",
+      "estimated_width_mm": 1360.0
+    },
+    {
+      "id": "4203",
+      "category": "DOOR",
+      "insertion_point": [
+        99869.036205,
+        -254318.480686
+      ],
+      "rotation_deg": 180.0130913229142,
+      "block_name": "SNR_PUERTA DOBLE CON MIRILLA - SNR_PuertaD8_1900x2500-6430944-NIVEAU RDC",
+      "estimated_width_mm": 1880.0
+    },
+    {
+      "id": "424D",
+      "category": "DOOR",
+      "insertion_point": [
+        94737.311265,
+        -246769.65302
+      ],
+      "rotation_deg": 0.0130913229142285,
+      "block_name": "SNR_PUERTA DOBLE CON MIRILLA - SNR_PuertaD8_1800x2400-6758662-NIVEAU RDC",
+      "estimated_width_mm": 1910.0
+    },
+    {
+      "id": "43AC",
+      "category": "DOOR",
+      "insertion_point": [
+        107573.127586,
+        -263166.720635
+      ],
+      "rotation_deg": 0.0130913229142285,
+      "block_name": "Doors_Door-sets_Swedoor_JELD-WEN_Exterior_Steel_4210_Unequal_Double_40 - SNR_PuertaEmergencia_1300x2200-4671762-NIVEAU RDC",
+      "estimated_width_mm": 1360.0
+    },
+    {
+      "id": "796E",
+      "category": "DOOR",
+      "insertion_point": [
+        122518.237864,
+        -250803.305553
+      ],
+      "rotation_deg": 90.01309132292371,
+      "block_name": "Viriyalohakij Rolling Shutters High Speed Shutter - High Speed Shutter VHP-AW-8344486-NIVEAU RDC",
+      "estimated_width_mm": 5100.0
+    }
+  ]
+}
