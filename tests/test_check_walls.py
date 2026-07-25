@@ -10,7 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.check_walls import check_walls, DEFAULT_DXF, DEFAULT_CONFIG
+from src.check_walls import check_walls, DEFAULT_DXF, DEFAULT_CONFIG
 
 
 class TestCheckWallsDefaults:

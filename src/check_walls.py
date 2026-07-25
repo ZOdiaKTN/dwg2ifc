@@ -6,7 +6,7 @@ from typing import List, Dict, Any
 from src.inventory import load_layer_config, extract_walls
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CONFIG = PROJECT_ROOT / "data" / "layer_config.yaml"
+DEFAULT_CONFIG = PROJECT_ROOT / "config" / "layer_config.yaml"
 DEFAULT_DXF = PROJECT_ROOT / "data" / "test1.dxf"
 
 

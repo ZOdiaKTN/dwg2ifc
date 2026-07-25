@@ -13,7 +13,7 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = PROJECT_ROOT / "src" / "parse_dxf.py"
 DEFAULT_DXF = PROJECT_ROOT / "data" / "test1.dxf"
-DEFAULT_CONFIG = PROJECT_ROOT / "data" / "layer_config.yaml"
+DEFAULT_CONFIG = PROJECT_ROOT / "config" / "layer_config.yaml"
 
 
 def _run_parse_dxf(dxf_path, config_path, output_path):
