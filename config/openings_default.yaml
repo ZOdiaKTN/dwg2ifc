@@ -1,0 +1,13 @@
+# Default height and sill assignments per opening category.
+# Values in millimetres.  Override per category as needed.
+#
+#   height_mm  – total opening height from sill to head
+#   sill_mm    – distance from finished floor to the bottom of the opening
+
+categories:
+  DOOR:
+    height_mm: 2100
+    sill_mm: 0
+  WINDOW:
+    height_mm: 1200
+    sill_mm: 900

@@ -1,5 +1,6 @@
 ezdxf>=1.1
 ifcopenshell>=0.7
+numpy>=1.24
 shapely>=2.0
 matplotlib>=3.7
 pyyaml>=6.0

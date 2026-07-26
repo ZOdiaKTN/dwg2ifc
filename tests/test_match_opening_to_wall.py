@@ -1,9 +1,8 @@
-"""Tests for match_opening_to_wall — NOT YET IMPLEMENTED."""
+"""Tests for match_opening_to_wall."""
 
 import pytest
 import logging
-
-pytestmark = pytest.mark.skip(reason="match_opening_to_wall not yet implemented")
+from src.parse_dxf import match_opening_to_wall, compute_opening_position
 
 
 def _wall(wid: str, v0: list[float], v1: list[float]) -> dict:
@@ -69,3 +68,48 @@ class TestMatchOpeningToWall:
         result = match_opening_to_wall(opening, [wall], angle_tolerance_deg=10)
         assert result is not None
         assert result["id"] == "W1"
+
+
+class TestComputeOpeningPosition:
+
+    def test_opening_fits(self):
+        """Opening centered on a 5000mm wall with 900mm width fits fine."""
+        wall = _wall("W1", [0.0, 0.0], [5000.0, 0.0])
+        opening = _opening("D1", (2500.0, 0.0), 0.0)
+        result = compute_opening_position(opening, wall)
+        assert result is not None
+        assert result["start"] == pytest.approx(2050.0)
+        assert result["end"] == pytest.approx(2950.0)
+        assert result["center_along"] == pytest.approx(2500.0)
+
+    def test_opening_too_wide_flagged(self, caplog):
+        """Opening wider than its wall segment is rejected and logged."""
+        wall = _wall("W1", [0.0, 0.0], [800.0, 0.0])
+        opening = _opening("D1", (400.0, 0.0), 0.0)  # 900mm wide on 800mm wall
+        with caplog.at_level(logging.WARNING, logger="src.parse_dxf"):
+            result = compute_opening_position(opening, wall)
+        assert result is None
+        assert "does not fit" in caplog.text
+        assert "D1" in caplog.text
+
+    def test_overlap_rejected(self, caplog):
+        """Opening that overlaps an already-placed opening is rejected."""
+        wall = _wall("W1", [0.0, 0.0], [5000.0, 0.0])
+        d1 = _opening("D1", (2500.0, 0.0), 0.0)
+        pos1 = compute_opening_position(d1, wall)
+        assert pos1 is not None
+        d2 = _opening("D2", (2500.0, 0.0), 0.0)  # same position, overlaps D1
+        with caplog.at_level(logging.WARNING, logger="src.parse_dxf"):
+            result = compute_opening_position(d2, wall, placed_openings=[pos1 | {"id": "D1"}])
+        assert result is None
+        assert "overlaps" in caplog.text
+        assert "D2" in caplog.text
+
+    def test_diagonal_wall(self):
+        """Opening projects correctly onto a diagonal wall."""
+        wall = _wall("W1", [0.0, 0.0], [3000.0, 4000.0])  # length=5000
+        opening = _opening("D1", (1500.0, 2000.0), 0.0)  # center
+        result = compute_opening_position(opening, wall)
+        assert result is not None
+        assert result["start"] == pytest.approx(2050.0)
+        assert result["end"] == pytest.approx(2950.0)

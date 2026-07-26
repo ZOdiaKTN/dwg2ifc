@@ -1,0 +1,21 @@
+[project]
+name = "dwg2ifc"
+version = "0.1.0"
+description = "Convert DXF floor plans to IFC for BIM applications"
+requires-python = ">=3.10"
+dependencies = [
+    "ezdxf>=1.1",
+    "ifcopenshell>=0.7",
+    "numpy>=1.24",
+    "shapely>=2.0",
+    "matplotlib>=3.7",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

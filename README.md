@@ -50,14 +50,15 @@ pip install -r requirements.txt
 ```bash
 # 1. Convert your DWG to DXF using ODA File Converter (outside this tool)
 
-# 2. Set up your layer mapping — copy and edit for your CAD conventions
+# 2. Set up layer mapping
 cp config/layer_config.example.yaml config/layer_config.yaml
+# Edit layer_config.yaml for your CAD conventions
 
 # 3. Run the pipeline
-python src/parse_dxf.py data/input.dxf config/layer_config.yaml data/parsed.json
+python src/parse_dxf.py data/test1.dxf config/layer_config.yaml data/parsed.json
 python src/reconstruct_walls.py data/parsed.json data/walls.json --tolerance 10
-python src/detect_openings.py data/walls.json data/parsed.json data/openings.json
-python src/generate_ifc.py data/openings.json output/model.ifc --floor-height 2700
+python src/detect_openings.py data/walls.json -o data/ -c config/openings_default.yaml
+python src/generate_ifc.py data/output.json data/final.ifc --floor-height 2700
 
 # 4. Check accuracy before trusting the output
 python src/validate_conversion.py data/parsed.json output/model.ifc data/report.json --threshold 95

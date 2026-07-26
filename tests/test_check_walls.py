@@ -1,18 +1,21 @@
-"""Tests for the check_walls script."""
+"""Tests for the validate_conversion script."""
 
 import sys
 from pathlib import Path
 
 import pytest
 
-# Make the project root importable so scripts.check_walls resolves.
+# Make the project root importable so src.validate_conversion resolves.
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.check_walls import check_walls, DEFAULT_DXF, DEFAULT_CONFIG
+from src.validate_conversion import check_walls, DEFAULT_DXF, DEFAULT_CONFIG
+
+_missing_dxf = pytest.mark.skipif(not DEFAULT_DXF.exists(), reason="test1.dxf not present in data/")
 
 
+@_missing_dxf
 class TestCheckWallsDefaults:
 
     def test_runs_without_error(self, capsys):
@@ -40,12 +43,14 @@ class TestCheckWallsDefaults:
             assert all(len(v) == 2 for v in w["vertices"])
 
 
+@_missing_dxf
 class TestCheckWallsCustomPaths:
 
     def test_with_explicit_paths(self, capsys):
         walls = check_walls(dxf_path=DEFAULT_DXF, config_path=DEFAULT_CONFIG)
         assert len(walls) > 0
 
-    def test_nonexistent_dxf_raises(self):
-        with pytest.raises(Exception):
-            check_walls(dxf_path="/nonexistent/file.dxf")
+
+def test_nonexistent_dxf_raises():
+    with pytest.raises(Exception):
+        check_walls(dxf_path="/nonexistent/file.dxf")

@@ -4,7 +4,7 @@ build joints, and offset to footprints.
 
 Usage::
 
-    python scripts/reconstruct_walls.py parsed.json output.json --tolerance 10
+    python src/reconstruct_walls.py parsed.json output.json --tolerance 10
 
 All corrections (snap distances, joints built, unclosable walls) are
 written to ``reconstruct_walls.log`` alongside the output file.

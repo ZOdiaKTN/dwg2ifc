@@ -51,6 +51,120 @@ def _are_parallel(w1: dict, w2: dict) -> bool:
     return cos > 0.95
 
 
+def match_opening_to_wall(
+    opening: dict,
+    walls: list[dict],
+    angle_tolerance_deg: float = 10,
+) -> dict | None:
+    """Find the nearest wall to an opening's insertion point and confirm alignment.
+
+    Returns the matched wall dict or ``None`` if no wall is close enough or
+    the opening's rotation does not align with the wall direction within
+    *angle_tolerance_deg*.
+    """
+    import math
+
+    if not walls:
+        return None
+
+    from shapely.geometry import Point, LineString
+
+    insertion = opening["insertion_point"]
+    px, py = insertion[0], insertion[1]
+    opening_angle = opening["rotation_deg"]
+
+    best_wall = None
+    best_dist = float("inf")
+
+    for wall in walls:
+        v0, v1 = wall["vertices"]
+        line = LineString([v0, v1])
+        dist = Point(px, py).distance(line)
+        if dist < best_dist:
+            best_dist = dist
+            best_wall = wall
+
+    if best_wall is None:
+        return None
+
+    dx, dy = _wall_direction(best_wall)
+    wall_angle = math.degrees(math.atan2(dy, dx)) % 360
+
+    diff = abs(opening_angle - wall_angle) % 180
+    if diff > 90:
+        diff = 180 - diff
+
+    if diff <= angle_tolerance_deg:
+        return best_wall
+
+    logger = logging.getLogger("src.parse_dxf")
+    logger.warning(
+        "Opening %s rotation %.1f° rejected: wall %s angle %.1f°, "
+        "diff %.1f° > %.1f° tolerance",
+        opening["id"], opening_angle,
+        best_wall["id"], wall_angle,
+        diff, angle_tolerance_deg,
+    )
+    return None
+
+
+def compute_opening_position(
+    opening: dict,
+    wall: dict,
+    placed_openings: list[dict] | None = None,
+) -> dict | None:
+    """Project an opening onto a wall's centerline and compute start/end.
+
+    Returns ``{"start": float, "end": float, "center_along": float}`` or
+    ``None`` when the opening doesn't fit or overlaps another opening on
+    the same wall (a warning is logged in those cases).
+    """
+    import math
+
+    logger = logging.getLogger("src.parse_dxf")
+    v0, v1 = wall["vertices"]
+    wall_len = math.hypot(v1[0] - v0[0], v1[1] - v0[1])
+    if wall_len < 1e-6:
+        logger.warning(
+            "Wall %s has zero length, cannot place opening %s",
+            wall["id"], opening["id"],
+        )
+        return None
+
+    px, py = opening["insertion_point"]
+    dx, dy = v1[0] - v0[0], v1[1] - v0[1]
+    t = ((px - v0[0]) * dx + (py - v0[1]) * dy) / (wall_len * wall_len)
+    center_along = t * wall_len
+
+    half = opening["estimated_width_mm"] / 2.0
+    start = center_along - half
+    end = center_along + half
+
+    if start < 0 or end > wall_len:
+        logger.warning(
+            "Opening %s (width %.0f) does not fit wall %s (length %.0f): "
+            "start=%.0f end=%.0f",
+            opening["id"], opening["estimated_width_mm"],
+            wall["id"], wall_len, start, end,
+        )
+        return None
+
+    if placed_openings:
+        for other in placed_openings:
+            if other["id"] == opening["id"]:
+                continue
+            o_start = other["start"]
+            o_end = other["end"]
+            if start < o_end and end > o_start:
+                logger.warning(
+                    "Opening %s overlaps opening %s on wall %s",
+                    opening["id"], other["id"], wall["id"],
+                )
+                return None
+
+    return {"start": start, "end": end, "center_along": center_along}
+
+
 def snap_endpoints(
     walls: list[dict],
     tolerance_mm: float = 10,

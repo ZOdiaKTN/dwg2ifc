@@ -258,3 +258,42 @@ Layer: _Séparation de pièce_
 ```
 
 Counts from `test1.dxf`: **759 walls, 16 doors, 0 windows, 17 warnings**.
+
+## Module 2 output — `reconstruct_walls.py `
+
+walls=776 doors=16 windows=0 intersections=448 footprints=679 unclosable=97
+
+## Module 3 output — `detect_openings.py`
+INFO     Loaded 776 walls, 16 doors, 0 windows
+INFO     Opening defaults: {'DOOR': {'height_mm': 2100.0, 'sill_mm': 0.0}, 'WINDOW': {'height_mm': 1200.0, 'sill_mm': 900.0}}
+Opening 846 rotation 270.0° rejected: wall 1A8 angle 8.1°, diff 81.9° > 10.0° tolerance
+WARNING  Opening 846 (DOOR) – no matching wall found, flagged for review
+Opening 933 rotation 270.0° rejected: wall 307 angle 351.9°, diff 81.9° > 10.0° tolerance
+WARNING  Opening 933 (DOOR) – no matching wall found, flagged for review
+Opening AD2 rotation 270.0° rejected: wall 9B9 angle 0.0°, diff 90.0° > 10.0° tolerance
+WARNING  Opening AD2 (DOOR) – no matching wall found, flagged for review
+Opening B38 (width 4623) does not fit wall 3BC (length 663): start=352 end=4974
+WARNING  Opening B38 (DOOR) – invalid position on wall 3BC, flagged for review
+Opening B39 (width 4623) does not fit wall 3C5 (length 807): start=-4311 end=311
+WARNING  Opening B39 (DOOR) – invalid position on wall 3C5, flagged for review
+Opening B51 (width 4123) does not fit wall 3DD (length 1243): start=932 end=5054
+WARNING  Opening B51 (DOOR) – invalid position on wall 3DD, flagged for review
+Opening B52 (width 4623) does not fit wall 3F2 (length 3202): start=-4311 end=311
+WARNING  Opening B52 (DOOR) – invalid position on wall 3F2, flagged for review
+Opening B53 (width 4623) does not fit wall 40A (length 607): start=-4311 end=311
+WARNING  Opening B53 (DOOR) – invalid position on wall 40A, flagged for review
+Opening B54 rotation 90.0° rejected: wall 1AA angle 180.0°, diff 90.0° > 10.0° tolerance
+WARNING  Opening B54 (DOOR) – no matching wall found, flagged for review
+Opening F7A rotation 180.0° rejected: wall 944 angle 270.0°, diff 90.0° > 10.0° tolerance
+WARNING  Opening F7A (DOOR) – no matching wall found, flagged for review
+Opening 1060 rotation 270.0° rejected: wall 474 angle 180.0°, diff 90.0° > 10.0° tolerance
+WARNING  Opening 1060 (DOOR) – no matching wall found, flagged for review
+Opening 1150 rotation 270.0° rejected: wall 562 angle 180.0°, diff 90.0° > 10.0° tolerance
+WARNING  Opening 1150 (DOOR) – no matching wall found, flagged for review
+Opening 4203 rotation 180.0° rejected: wall 1A8D angle 90.0°, diff 90.0° > 10.0° tolerance
+WARNING  Opening 4203 (DOOR) – no matching wall found, flagged for review
+Opening 43AC rotation 0.0° rejected: wall 3F3 angle 90.0°, diff 90.0° > 10.0° tolerance
+WARNING  Opening 43AC (DOOR) – no matching wall found, flagged for review
+Opening 796E (width 5100) does not fit wall 1A3A (length 590): start=540 end=5640
+WARNING  Opening 796E (DOOR) – invalid position on wall 1A3A, flagged for review
+total_openings=16  matched=1  flagged_for_review=15  walls=776

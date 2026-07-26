@@ -13,7 +13,7 @@ import pytest
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = PROJECT_ROOT / "src" / "parse_dxf.py"
 DEFAULT_DXF = PROJECT_ROOT / "data" / "test1.dxf"
-DEFAULT_CONFIG = PROJECT_ROOT / "config" / "layer_config.yaml"
+DEFAULT_CONFIG = PROJECT_ROOT / "config" / "layer_config.example.yaml"
 
 
 def _run_parse_dxf(dxf_path, config_path, output_path):
@@ -282,6 +282,7 @@ class TestParseDxfErrorHandling:
 
 class TestParseDxfRealFile:
 
+    @pytest.mark.skipif(not DEFAULT_DXF.exists(), reason="test1.dxf not present in data/")
     def test_runs_on_test_dxf(self, tmp_path):
         out = tmp_path / "out.json"
         stdout, stderr, rc = _run_parse_dxf(DEFAULT_DXF, DEFAULT_CONFIG, out)
